@@ -1,0 +1,356 @@
+﻿<Window x:Name="armor_stand_form" x:Class="ArmorStand.ArmorStandForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArmorStand"
+        mc:Ignorable="d"
+        Title="盔甲架生成器" Height="601" Width="800" WindowStartupLocation="CenterScreen" Background="#FF141414"
+        >
+    <Grid>
+        <TabControl x:Name="armor_stand_tab" Margin="474,0,3,3" RenderTransformOrigin="0.495,0.536" MouseLeftButtonDown="Armor_stand_tab_MouseLeftButtonDown" MouseLeftButtonUp="Armor_stand_tab_MouseLeftButtonUp" MouseMove="Armor_stand_tab_MouseMove" MouseWheel="Armor_stand_tab_MouseWheel" Background="White" BorderBrush="White">
+            <TabItem Header="盔甲架视图" Foreground="Black">
+                <TabItem.Background>
+                    <SolidColorBrush Color="#FF141414"/>
+                </TabItem.Background>
+                <Grid Background="#FFE5E5E5">
+                    <Viewport3D x:Name="armor_stand_area" Loaded="Armor_stand_area_Loaded" OpacityMask="#FFA8A8A8"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="click_to_spawn" Content="生成(Ctrl+A)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Click="Click_to_spawn_Click" Foreground="White">
+            <Button.Background>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:FieldModifier="public" x:Name="click_to_return" Content="返回(Ctrl+R)" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="78" Height="19" Click="Click_to_return_Click" Foreground="White">
+            <Button.Background>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <TabControl x:Name="tabControl1" Margin="0,19,0,1" SelectedIndex="0" Background="#FF141414" HorizontalAlignment="Left" Width="474">
+            <TabItem Header="NBT" Foreground="#FFA8A8A8" Background="Black">
+                <Grid>
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FFE5E5E5" Opacity="0"/>
+                    </Grid.Background>
+                    <GroupBox x:Name="NBTBox" Header="NBT设置" HorizontalAlignment="Left" Height="309" VerticalAlignment="Top" Width="468" Foreground="White">
+                        <GroupBox.Background>
+                            <SolidColorBrush Color="#FFF9F9F9" Opacity="0"/>
+                        </GroupBox.Background>
+                        <WrapPanel x:Name="nbt_area" HorizontalAlignment="Left" Height="291" VerticalAlignment="Top" Width="458" Margin="0,0,-2,-4" Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <WrapPanel.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </WrapPanel.Background>
+                        </WrapPanel>
+                    </GroupBox>
+                    <GroupBox x:Name="body_box" Header="部位权限设置" Margin="0,309,234,0" Foreground="White">
+                        <Grid HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="224" Margin="0,0,-2,-2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35*"></ColumnDefinition>
+                                <ColumnDefinition Width="44*"></ColumnDefinition>
+                                <ColumnDefinition Width="50*"></ColumnDefinition>
+                                <ColumnDefinition Width="95*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="禁拿走" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="28,4,5,4" Width="46" Grid.ColumnSpan="2" Foreground="#FFA8A8A8">
+                            </Label>
+                            <Label Content="禁替换" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="1,4,3,4" Width="46" Foreground="#FFA8A8A8"/>
+                            <Label Content="禁放置" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="-20,4,22,4" Width="46" Foreground="#FFA8A8A8"></Label>
+
+                            <Label Content="头部:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="-3,4,0,4" Width="38" Foreground="#FFA8A8A8"/>
+                            <Label Content="胸部:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="-3,4,0,4" Width="38" Foreground="#FFA8A8A8"/>
+                            <Label Content="腿部:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="-3,4,0,4" Width="38" Foreground="#FFA8A8A8"/>
+                            <Label Content="脚部:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="-3,4,0,4" Width="38" Foreground="#FFA8A8A8"/>
+                            <Label Content="手部:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="-3,4,0,4" Width="38" Foreground="#FFA8A8A8"/>
+
+                            <CheckBox Name="dHead" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Margin="12,9,16,9" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="dChest" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="12,8,16,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="dLegs" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="12,8,16,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="dBoots" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="12,8,16,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="dHand" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="12,8,16,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+
+                            <CheckBox Name="rHead" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Margin="17,9" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="rChest" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="17,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="rLegs" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="17,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="rBoots" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="17,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="rHand" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="17,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+
+                            <CheckBox Name="pHead" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Margin="0,9,44,9" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="pChest" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="0,8,44,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="pLegs" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="0,8,44,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="pBoots" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="0,8,44,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                            <CheckBox Name="pHand" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="0,8,44,8" Width="16" Background="#FFA8A8A8"></CheckBox>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="equipment_box" Header="装备信息" Margin="229,309,0,0" Foreground="White">
+                        <Grid HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="229" Margin="0,0,-2,-2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"></ColumnDefinition>
+                                <ColumnDefinition Width="199*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="头部:" Grid.Row="0" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+                            <Label Content="胸部:" Grid.Row="1" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+                            <Label Content="腿部:" Grid.Row="2" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+                            <Label Content="脚部:" Grid.Row="3" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+                            <Label Content="左臂:" Grid.Row="4" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+                            <Label Content="右臂:" Grid.Row="5" Grid.Column="0" Foreground="#FFA8A8A8"></Label>
+
+                            <Button x:FieldModifier="public" x:Name="HeadItem" Content="更改" Grid.Row="0" Grid.Column="1" Click="Head_item_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}" Uid="modify">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF141414" Opacity="0.5"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:FieldModifier="public" x:Name="ChestItem" Content="更改" Grid.Row="1" Grid.Column="1" Click="Chest_item_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}" Uid="modify">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF141414" Opacity="0.5"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:FieldModifier="public" x:Name="LegItem" Content="更改" Grid.Row="2" Grid.Column="1" Click="Leg_item_Click" Foreground="#FFA8A8A8" Background="#FF141414" BorderBrush="{x:Null}" Uid="modify"></Button>
+                            <Button x:FieldModifier="public" x:Name="FeetItem" Content="更改" Grid.Row="3" Grid.Column="1" Click="Feet_item_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}" Uid="modify">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF141414" Opacity="0.5"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:FieldModifier="public" x:Name="LeftHandItem" Content="更改" Grid.Row="4" Grid.Column="1" Click="Lefthand_item_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}" Uid="modify">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF141414" Opacity="0.5"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:FieldModifier="public" x:Name="RightHandItem" Content="更改" Grid.Row="5" Grid.Column="1" Click="Righthand_item_Click" BorderBrush="{x:Null}" Uid="modify">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF141414" Opacity="0.5"/>
+                                </Button.Background>
+                                <Button.Foreground>
+                                    <SolidColorBrush Color="#FFA8A8A8"/>
+                                </Button.Foreground>
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Pose" Foreground="#FFA8A8A8" Background="Black">
+                <Grid x:Name="pose_page" IsEnabled="False">
+                    <Grid x:Name="pose_area" HorizontalAlignment="Left" Height="523" VerticalAlignment="Top" Width="468">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="145*"></ColumnDefinition>
+                            <ColumnDefinition Width="143*"></ColumnDefinition>
+                            <ColumnDefinition Width="130*"></ColumnDefinition>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <GroupBox Content="头部" Grid.Row="0" Grid.ColumnSpan="4" Foreground="White"/>
+                        <GroupBox Content="身体" Grid.Row="1" Grid.ColumnSpan="4" Foreground="White" BorderBrush="{x:Null}"></GroupBox>
+                        <GroupBox Content="左臂" Grid.Row="2" Grid.ColumnSpan="4" Foreground="White" BorderBrush="{x:Null}"></GroupBox>
+                        <GroupBox Content="右臂" Grid.Row="3" Grid.ColumnSpan="4" Foreground="White" BorderBrush="{x:Null}"></GroupBox>
+                        <GroupBox Content="左腿" Grid.Row="4" Grid.ColumnSpan="4" Foreground="White" BorderBrush="{x:Null}"></GroupBox>
+                        <GroupBox Content="右腿" Grid.Row="5" Grid.ColumnSpan="4" Foreground="White" BorderBrush="{x:Null}"></GroupBox>
+
+                        <Label Content="X:" Grid.Row="0" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="head_x" Grid.Row="0" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Head_x_ValueChanged"></Slider>
+                        <TextBox x:Name="head_x_value" Grid.Row="0" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" TextWrapping="Wrap" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="0" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="head_y" Grid.Row="0" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Head_y_ValueChanged"></Slider>
+                        <TextBox x:Name="head_y_value" Grid.Row="0" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="0" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="head_z" Grid.Row="0" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Head_z_ValueChanged"></Slider>
+                        <TextBox x:Name="head_z_value" Grid.Row="0" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_head" Content="重置" Grid.Row="0" Grid.Column="3" Click="Reset_head_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}" Background="{x:Null}"/>
+
+
+                        <Label Content="X:" Grid.Row="1" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="body_x" Grid.Row="1" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Body_x_ValueChanged"></Slider>
+                        <TextBox x:Name="body_x_value" Grid.Row="1" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="1" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="body_y" Grid.Row="1" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Body_y_ValueChanged"></Slider>
+                        <TextBox x:Name="body_y_value" Grid.Row="1" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="1" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="body_z" Grid.Row="1" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Body_z_ValueChanged"></Slider>
+                        <TextBox x:Name="body_z_value" Grid.Row="1" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_body" Content="重置" Grid.Row="1" Grid.Column="3" Click="Reset_body_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                            </Button.Background>
+                        </Button>
+
+
+                        <Label Content="X:" Grid.Row="2" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lhand_x" Grid.Row="2" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lhand_x_ValueChanged"></Slider>
+                        <TextBox x:Name="lhand_x_value" Grid.Row="2" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="2" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lhand_y" Grid.Row="2" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lhand_y_ValueChanged"></Slider>
+                        <TextBox x:Name="lhand_y_value" Grid.Row="2" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="2" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lhand_z" Grid.Row="2" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lhand_z_ValueChanged"></Slider>
+                        <TextBox x:Name="lhand_z_value" Grid.Row="2" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_lhand" Content="重置" Grid.Row="2" Grid.Column="3" Click="Reset_lhand_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                            </Button.Background>
+                        </Button>
+
+
+                        <Label Content="X:" Grid.Row="3" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rhand_x" Grid.Row="3" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rhand_x_ValueChanged"></Slider>
+                        <TextBox x:Name="rhand_x_value" Grid.Row="3" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="3" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rhand_y" Grid.Row="3" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rhand_y_ValueChanged"></Slider>
+                        <TextBox x:Name="rhand_y_value" Grid.Row="3" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="3" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rhand_z" Grid.Row="3" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rhand_z_ValueChanged"></Slider>
+                        <TextBox x:Name="rhand_z_value" Grid.Row="3" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_rhand" Content="重置" Grid.Row="3" Grid.Column="3" Click="Reset_rhand_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                            </Button.Background>
+                        </Button>
+
+
+                        <Label Content="X:" Grid.Row="4" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lleg_x" Grid.Row="4" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lleg_x_ValueChanged"></Slider>
+                        <TextBox x:Name="lleg_x_value" Grid.Row="4" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="4" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lleg_y" Grid.Row="4" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lleg_y_ValueChanged"></Slider>
+                        <TextBox x:Name="lleg_y_value" Grid.Row="4" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="4" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="lleg_z" Grid.Row="4" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Lleg_z_ValueChanged"></Slider>
+                        <TextBox x:Name="lleg_z_value" Grid.Row="4" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_lleg" Content="重置" Grid.Row="4" Grid.Column="3" Click="Reset_lleg_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                            </Button.Background>
+                        </Button>
+
+
+                        <Label Content="X:" Grid.Row="5" Grid.Column="0" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rleg_x" Grid.Row="5" Grid.Column="0" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rleg_x_ValueChanged"></Slider>
+                        <TextBox x:Name="rleg_x_value" Grid.Row="5" Grid.Column="0" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Y:" Grid.Row="5" Grid.Column="1" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rleg_y" Grid.Row="5" Grid.Column="1" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rleg_y_ValueChanged"></Slider>
+                        <TextBox x:Name="rleg_y_value" Grid.Row="5" Grid.Column="1" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Z:" Grid.Row="5" Grid.Column="2" Margin="0,20,98,45" Foreground="#FFA8A8A8"></Label>
+                        <Slider x:Name="rleg_z" Grid.Row="5" Grid.Column="2" Margin="19,20,0,45" Value="0" Minimum="-180" Maximum="180" ValueChanged="Rleg_z_ValueChanged"></Slider>
+                        <TextBox x:Name="rleg_z_value" Grid.Row="5" Grid.Column="2" Margin="0,44,0,0" MaxLines="1" MinLines="1" Text="0" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <TextBox.Background>
+                                <SolidColorBrush Color="White" Opacity="0.01"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Button x:Name="reset_rleg" Content="重置" Grid.Row="5" Grid.Column="3" Click="Reset_rleg_Click" Foreground="#FFA8A8A8" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

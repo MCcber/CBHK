@@ -1,0 +1,1803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{600F3667-89F5-4F22-928A-6D9ADB0A93BB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>cbhk_editor</RootNamespace>
+    <AssemblyName>cbhk_editor</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CB图标.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.1.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=6.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.6.0.1\lib\net472\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
+      <HintPath>..\packages\DelegateDecompiler.0.29.1\lib\net45\DelegateDecompiler.dll</HintPath>
+    </Reference>
+    <Reference Include="DelegateDecompiler.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
+      <HintPath>..\packages\DelegateDecompiler.EntityFramework.0.29.1\lib\net45\DelegateDecompiler.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.10.0.3\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.2\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db, Version=3.3.0.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.3.3.0\lib\net472\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="MailBee.NET, Version=12.2.0.630, Culture=neutral, PublicKeyToken=cd85b70fb26f9fc1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailBee.NET.12.2.0\lib\net45\MailBee.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.10.2\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.10.2\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.10.2\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Reflection, Version=1.1.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Reflection.Core.1.1.1\lib\net45\Mono.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.10.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.10.2\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twilio, Version=5.58.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.58.0\lib\net451\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvancementSpawner\advancement_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\advancement_spawner.Designer.cs">
+      <DependentUpon>advancement_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\SetInfo.cs" />
+    <Compile Include="AdvancementSpawner\TriggersManager.cs" />
+    <Compile Include="AdvancementSpawner\triggers\bee_nest_destroyed\bee_nest_destoryed_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\bee_nest_destroyed\bee_nest_destoryed_page.Designer.cs">
+      <DependentUpon>bee_nest_destoryed_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\bred_animals\bred_animals_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\bred_animals\bred_animals_page.Designer.cs">
+      <DependentUpon>bred_animals_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\brewed_potion\brewed_potion_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\brewed_potion\brewed_potion_page.Designer.cs">
+      <DependentUpon>brewed_potion_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\changed_dimension\changed_dimension_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\changed_dimension\changed_dimension_page.Designer.cs">
+      <DependentUpon>changed_dimension_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\channeled_lightning\channeled_lightning_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\channeled_lightning\channeled_lightning_page.Designer.cs">
+      <DependentUpon>channeled_lightning_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\construct_beacon\construct_beacon_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\construct_beacon\construct_beacon_page.Designer.cs">
+      <DependentUpon>construct_beacon_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\consume_item\consume_item_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\consume_item\consume_item_page.Designer.cs">
+      <DependentUpon>consume_item_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\cured_zombie_villager\cured_zombie_villager_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\cured_zombie_villager\cured_zombie_villager_page.Designer.cs">
+      <DependentUpon>cured_zombie_villager_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\effects_changed\effects_changed_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\effects_changed\effects_changed_page.Designer.cs">
+      <DependentUpon>effects_changed_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\effects_changed\effect_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\effects_changed\effect_form.Designer.cs">
+      <DependentUpon>effect_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\enchanted_item\enchanted_item_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\enchanted_item\enchanted_item_page.Designer.cs">
+      <DependentUpon>enchanted_item_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tool_forms\block_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tool_forms\block_form.Designer.cs">
+      <DependentUpon>block_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\enter_block\enter_block_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\enter_block\enter_block_page.Designer.cs">
+      <DependentUpon>enter_block_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\entity_hurt_player\entity_hurt_player_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\entity_hurt_player\entity_hurt_player_page.Designer.cs">
+      <DependentUpon>entity_hurt_player_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\entity_killed_player\entity_killed_player_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\entity_killed_player\entity_killed_player_page.Designer.cs">
+      <DependentUpon>entity_killed_player_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\filled_bucket\filled_bucket_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\filled_bucket\filled_bucket_page.Designer.cs">
+      <DependentUpon>filled_bucket_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\fishing_rod_hooked\fishing_rod_hooked_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\fishing_rod_hooked\fishing_rod_hooked_page.Designer.cs">
+      <DependentUpon>fishing_rod_hooked_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\hero_of_the_village\hero_of_the_village_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\hero_of_the_village\hero_of_the_village_page.Designer.cs">
+      <DependentUpon>hero_of_the_village_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\inventory_changed\inventory_changed_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\inventory_changed\inventory_changed_page.Designer.cs">
+      <DependentUpon>inventory_changed_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\item_durability_changed\item_durability_changed_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\item_durability_changed\item_durability_changed_page.Designer.cs">
+      <DependentUpon>item_durability_changed_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\item_used_on_block\item_used_on_block_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\item_used_on_block\item_used_on_block_page.Designer.cs">
+      <DependentUpon>item_used_on_block_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\killed_by_crossbow\killed_by_crossbow_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\killed_by_crossbow\killed_by_crossbow_page.Designer.cs">
+      <DependentUpon>killed_by_crossbow_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\levitation\levitation_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\levitation\levitation_page.Designer.cs">
+      <DependentUpon>levitation_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\location\location_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\location\location_page.Designer.cs">
+      <DependentUpon>location_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\nether_travel\nether_travel_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\nether_travel\nether_travel_page.Designer.cs">
+      <DependentUpon>nether_travel_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\placed_block\placed_block_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\placed_block\placed_block_page.Designer.cs">
+      <DependentUpon>placed_block_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_generates_container_loot\player_generates_container_loot_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_generates_container_loot\player_generates_container_loot_page.Designer.cs">
+      <DependentUpon>player_generates_container_loot_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_hurt_entity\player_hurt_entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_hurt_entity\player_hurt_entity_page.Designer.cs">
+      <DependentUpon>player_hurt_entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_interacted_with_entity\player_interacted_with_entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_interacted_with_entity\player_interacted_with_entity_page.Designer.cs">
+      <DependentUpon>player_interacted_with_entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_killed_entity\player_killed_entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\player_killed_entity\player_killed_entity_page.Designer.cs">
+      <DependentUpon>player_killed_entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\recipe_unlocked\recipe_unlocked_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\recipe_unlocked\recipe_unlocked_page.Designer.cs">
+      <DependentUpon>recipe_unlocked_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\shot_crossbow\shot_crossbow_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\shot_crossbow\shot_crossbow_page.Designer.cs">
+      <DependentUpon>shot_crossbow_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\slept_in_bed\slept_in_bed_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\slept_in_bed\slept_in_bed_page.Designer.cs">
+      <DependentUpon>slept_in_bed_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\slide_down_block\slide_down_block_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\slide_down_block\slide_down_block_page.Designer.cs">
+      <DependentUpon>slide_down_block_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\summoned_entity\summoned_entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\summoned_entity\summoned_entity_page.Designer.cs">
+      <DependentUpon>summoned_entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tame_animal\tame_animal_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tame_animal\tame_animal_page.Designer.cs">
+      <DependentUpon>tame_animal_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\target_hit\target_hit_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\target_hit\target_hit_page.Designer.cs">
+      <DependentUpon>target_hit_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\thrown_item_picked_up_by_entity\thrown_item_picked_up_by_entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\thrown_item_picked_up_by_entity\thrown_item_picked_up_by_entity_page.Designer.cs">
+      <DependentUpon>thrown_item_picked_up_by_entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tick\tick_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\tick\tick_page.Designer.cs">
+      <DependentUpon>tick_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\used_ender_eye\used_ender_eye_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\used_ender_eye\used_ender_eye_page.Designer.cs">
+      <DependentUpon>used_ender_eye_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\used_totem\used_totem_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\used_totem\used_totem_page.Designer.cs">
+      <DependentUpon>used_totem_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\villager_trade\villager_trade_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\villager_trade\villager_trade_page.Designer.cs">
+      <DependentUpon>villager_trade_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\voluntary_exile\voluntary_exile_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers\voluntary_exile\voluntary_exile_page.Designer.cs">
+      <DependentUpon>voluntary_exile_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancementSpawner\triggers_form.Designer.cs">
+      <DependentUpon>triggers_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\carver_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\carver_spawner.Designer.cs">
+      <DependentUpon>carver_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\CarverType\canyon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\CarverType\canyon.Designer.cs">
+      <DependentUpon>canyon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\CarverType\cave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCarverSpawner\CarverType\cave.Designer.cs">
+      <DependentUpon>cave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomBiomeSpawner\BiomeNodes\spawners.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomBiomeSpawner\BiomeNodes\spawners.Designer.cs">
+      <DependentUpon>spawners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomBiomeSpawner\biome_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomBiomeSpawner\biome_spawner.Designer.cs">
+      <DependentUpon>biome_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatapackSpawner\CompareFile.cs" />
+    <Compile Include="DatapackSpawner\datapack_head.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DatapackSpawner\datapack_head.Designer.cs">
+      <DependentUpon>datapack_head.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatapackSpawner\datapack_ui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatapackSpawner\datapack_ui.Designer.cs">
+      <DependentUpon>datapack_ui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatapackSpawner\DirectoryAllFiles.cs" />
+    <Compile Include="DimensionSpawner\BiomeSource\multi_noise.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\BiomeSource\multi_noise.Designer.cs">
+      <DependentUpon>multi_noise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\BiomeSource\muti_noise_biomes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\BiomeSource\muti_noise_biomes.Designer.cs">
+      <DependentUpon>muti_noise_biomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\dimension_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\dimension_spawner.Designer.cs">
+      <DependentUpon>dimension_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\dimension_type.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\dimension_type.Designer.cs">
+      <DependentUpon>dimension_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\generator_flat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\generator_flat.Designer.cs">
+      <DependentUpon>generator_flat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\generator_noise.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\generator_noise.Designer.cs">
+      <DependentUpon>generator_noise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionSpawner\settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DimensionSpawner\settings.Designer.cs">
+      <DependentUpon>settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitySpawner\EntityModifyManager.cs" />
+    <Compile Include="EntitySpawner\EntityNBTForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntitySpawner\EntityNBTForm.Designer.cs">
+      <DependentUpon>EntityNBTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_page.Designer.cs">
+      <DependentUpon>entity_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_potion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_potion.Designer.cs">
+      <DependentUpon>entity_potion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntitySpawner\entity_spawner.Designer.cs">
+      <DependentUpon>entity_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntitySpawner\passenger_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntitySpawner\passenger_page.Designer.cs">
+      <DependentUpon>passenger_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSpawner\BlockStateProvider\SimpleState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSpawner\BlockStateProvider\SimpleState.Designer.cs">
+      <DependentUpon>SimpleState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSpawner\BlockStateProvider\WeightedState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSpawner\BlockStateProvider\WeightedState.Designer.cs">
+      <DependentUpon>WeightedState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSpawner\DecoratorsType\AlterGround.cs" />
+    <Compile Include="FeatureSpawner\DecoratorsType\Other.cs" />
+    <Compile Include="FeatureSpawner\FeatureType\foliage_placer_type\blob_foliage_placer.cs" />
+    <Compile Include="FeatureSpawner\FeatureType\foliage_placer_type\Other.cs" />
+    <Compile Include="FeatureSpawner\FeatureType\minimum_size_type\three_layers_feature_size.cs" />
+    <Compile Include="FeatureSpawner\FeatureType\minimum_size_type\two_layers_feature_size.cs" />
+    <Compile Include="FeatureSpawner\FeatureType\Tree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSpawner\FeatureType\Tree.Designer.cs">
+      <DependentUpon>Tree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureSpawner\feature_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSpawner\feature_spawner.Designer.cs">
+      <DependentUpon>feature_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FireWorkSpawner\firework_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FireWorkSpawner\firework_page.Designer.cs">
+      <DependentUpon>firework_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FireWorkSpawner\firework_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FireWorkSpawner\firework_spawner.Designer.cs">
+      <DependentUpon>firework_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="ItemSpawner\attribute_component.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemSpawner\attribute_component.Designer.cs">
+      <DependentUpon>attribute_component.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSpawner\enchantment_component.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemSpawner\enchantment_component.Designer.cs">
+      <DependentUpon>enchantment_component.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSpawner\ItemModifyManager.cs" />
+    <Compile Include="ItemSpawner\item_component.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemSpawner\item_component.Designer.cs">
+      <DependentUpon>item_component.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSpawner\item_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemSpawner\item_spawner.Designer.cs">
+      <DependentUpon>item_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSpawner\potion_component.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemSpawner\potion_component.Designer.cs">
+      <DependentUpon>potion_component.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\ConditionsManager.cs" />
+    <Compile Include="LootTableSpawner\condition_components\block_state_property.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\block_state_property.Designer.cs">
+      <DependentUpon>block_state_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\damage_source_properties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\damage_source_properties.Designer.cs">
+      <DependentUpon>damage_source_properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\entity_properties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\entity_properties.Designer.cs">
+      <DependentUpon>entity_properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\entity_scores.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\entity_scores.Designer.cs">
+      <DependentUpon>entity_scores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\location_check.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\location_check.Designer.cs">
+      <DependentUpon>location_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\match_tool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\match_tool.Designer.cs">
+      <DependentUpon>match_tool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\random_chance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\random_chance.Designer.cs">
+      <DependentUpon>random_chance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\random_chance_with_looting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\random_chance_with_looting.Designer.cs">
+      <DependentUpon>random_chance_with_looting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\reference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\reference.Designer.cs">
+      <DependentUpon>reference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\adv_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\adv_page.Designer.cs">
+      <DependentUpon>adv_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\EntityComponentsManager.cs" />
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\effect_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\effect_page.Designer.cs">
+      <DependentUpon>effect_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\entity_property_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\entity_property_form.Designer.cs">
+      <DependentUpon>entity_property_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\equipment_slot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\equipment_slot.Designer.cs">
+      <DependentUpon>equipment_slot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\enchant_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\enchant_page.Designer.cs">
+      <DependentUpon>enchant_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\item_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\item_form.Designer.cs">
+      <DependentUpon>item_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\block_predicate_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\block_predicate_page.Designer.cs">
+      <DependentUpon>block_predicate_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\fluid_predicate_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\fluid_predicate_page.Designer.cs">
+      <DependentUpon>fluid_predicate_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\location_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\location_form.Designer.cs">
+      <DependentUpon>location_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\stats_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\stats_page.Designer.cs">
+      <DependentUpon>stats_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\table_bonus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\table_bonus.Designer.cs">
+      <DependentUpon>table_bonus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\time_check.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\time_check.Designer.cs">
+      <DependentUpon>time_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\weather_check.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_components\weather_check.Designer.cs">
+      <DependentUpon>weather_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\condition_form.Designer.cs">
+      <DependentUpon>condition_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\entry_item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\entry_item.Designer.cs">
+      <DependentUpon>entry_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\FunctionsManager.cs" />
+    <Compile Include="LootTableSpawner\function_components\apply_bonus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\apply_bonus.Designer.cs">
+      <DependentUpon>apply_bonus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\copy_nbt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\copy_nbt.Designer.cs">
+      <DependentUpon>copy_nbt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\copy_state.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\copy_state.Designer.cs">
+      <DependentUpon>copy_state.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\enchant_randomly.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\enchant_randomly.Designer.cs">
+      <DependentUpon>enchant_randomly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\enchant_with_levels.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\enchant_with_levels.Designer.cs">
+      <DependentUpon>enchant_with_levels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\exploration_map.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\exploration_map.Designer.cs">
+      <DependentUpon>exploration_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\fill_player_head.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\fill_player_head.Designer.cs">
+      <DependentUpon>fill_player_head.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\limit_count.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\limit_count.Designer.cs">
+      <DependentUpon>limit_count.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\looting_enchant.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\looting_enchant.Designer.cs">
+      <DependentUpon>looting_enchant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_attributes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_attributes.Designer.cs">
+      <DependentUpon>set_attributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_contents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_contents.Designer.cs">
+      <DependentUpon>set_contents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_count.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_count.Designer.cs">
+      <DependentUpon>set_count.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_damage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_damage.Designer.cs">
+      <DependentUpon>set_damage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_loot_table.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_loot_table.Designer.cs">
+      <DependentUpon>set_loot_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_lore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_lore.Designer.cs">
+      <DependentUpon>set_lore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_name.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_name.Designer.cs">
+      <DependentUpon>set_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_nbt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_nbt.Designer.cs">
+      <DependentUpon>set_nbt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_stew_effect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\set_stew_effect.Designer.cs">
+      <DependentUpon>set_stew_effect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\copy_nbt\copy_nbt_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\copy_nbt\copy_nbt_form.Designer.cs">
+      <DependentUpon>copy_nbt_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\copy_nbt\ops_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\copy_nbt\ops_page.Designer.cs">
+      <DependentUpon>ops_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_attributes\attribute_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_attributes\attribute_page.Designer.cs">
+      <DependentUpon>attribute_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_attributes\set_attributes_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_attributes\set_attributes_form.Designer.cs">
+      <DependentUpon>set_attributes_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_form.Designer.cs">
+      <DependentUpon>set_lore_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_page.Designer.cs">
+      <DependentUpon>set_lore_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_form.Designer.cs">
+      <DependentUpon>set_stew_effect_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_page.Designer.cs">
+      <DependentUpon>set_stew_effect_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\function_form.Designer.cs">
+      <DependentUpon>function_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\lt_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\lt_spawner.Designer.cs">
+      <DependentUpon>lt_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LootTableSpawner\pool_item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LootTableSpawner\pool_item.Designer.cs">
+      <DependentUpon>pool_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\about_cbhk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\about_cbhk.Designer.cs">
+      <DependentUpon>about_cbhk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\cbhk_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\cbhk_form.Designer.cs">
+      <DependentUpon>cbhk_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\command_result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\command_result.Designer.cs">
+      <DependentUpon>command_result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\feedback_bugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\feedback_bugs.Designer.cs">
+      <DependentUpon>feedback_bugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\individualization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\individualization.Designer.cs">
+      <DependentUpon>individualization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\join_group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\join_group.Designer.cs">
+      <DependentUpon>join_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\load_links.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\load_links.Designer.cs">
+      <DependentUpon>load_links.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\login_tool.cs" />
+    <Compile Include="MainForm\set_links.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\set_links.Designer.cs">
+      <DependentUpon>set_links.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm\SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm\SpawnersManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeSpawner\recipe_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RecipeSpawner\recipe_page.Designer.cs">
+      <DependentUpon>recipe_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeSpawner\recipe_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecipeSpawner\recipe_spawner.Designer.cs">
+      <DependentUpon>recipe_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeSpawner\value_tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RecipeSpawner\value_tab.Designer.cs">
+      <DependentUpon>value_tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ComponentsManager.cs" />
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\DelayTimes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\DelayTimes.Designer.cs">
+      <DependentUpon>DelayTimes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\EveryHurted.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\EveryHurted.Designer.cs">
+      <DependentUpon>EveryHurted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\HurtedDamage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Entity\HurtedDamage.Designer.cs">
+      <DependentUpon>HurtedDamage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\DropItemByQKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\DropItemByQKey.Designer.cs">
+      <DependentUpon>DropItemByQKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\HaveItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\HaveItems.Designer.cs">
+      <DependentUpon>HaveItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\SelectedItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\SelectedItem.Designer.cs">
+      <DependentUpon>SelectedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\WearItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\ConditionCompnents\Item\WearItem.Designer.cs">
+      <DependentUpon>WearItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\GetEffect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\GetEffect.Designer.cs">
+      <DependentUpon>GetEffect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\ParticleEffect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\ParticleEffect.Designer.cs">
+      <DependentUpon>ParticleEffect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\SpreadTeleport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\SpreadTeleport.Designer.cs">
+      <DependentUpon>SpreadTeleport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\StruckByLightning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\StruckByLightning.Designer.cs">
+      <DependentUpon>StruckByLightning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\SummonEntity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\EventsCompnents\SummonEntity.Designer.cs">
+      <DependentUpon>SummonEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\load_entity.cs" />
+    <Compile Include="SkillSpawner\load_item.cs" />
+    <Compile Include="SkillSpawner\SkillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\SkillInfo.Designer.cs">
+      <DependentUpon>SkillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkillSpawner\SkillManager.cs" />
+    <Compile Include="SkillSpawner\skill_ui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkillSpawner\skill_ui.Designer.cs">
+      <DependentUpon>skill_ui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpawnerSpawner\spawner_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpawnerSpawner\spawner_spawner.Designer.cs">
+      <DependentUpon>spawner_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SurfaceBuilderSpawner\surface_builder_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SurfaceBuilderSpawner\surface_builder_spawner.Designer.cs">
+      <DependentUpon>surface_builder_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TagSpawner\tag_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TagSpawner\tag_page.Designer.cs">
+      <DependentUpon>tag_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TagSpawner\tag_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TagSpawner\tag_spawner.Designer.cs">
+      <DependentUpon>tag_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolClasses\AutoStart.cs" />
+    <Compile Include="ToolClasses\Bind_TreeView.cs" />
+    <Compile Include="ToolClasses\JsonTypeSetting.cs" />
+    <Compile Include="ToolClasses\SerializeTree.cs" />
+    <Compile Include="ToolClasses\TextBoxTransparent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolClasses\uid_spawner.cs" />
+    <Compile Include="ToolClasses\Win32.cs" />
+    <Compile Include="VillagerSpawner\transaction_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VillagerSpawner\transaction_page.Designer.cs">
+      <DependentUpon>transaction_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VillagerSpawner\villager_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VillagerSpawner\villager_page.Designer.cs">
+      <DependentUpon>villager_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VillagerSpawner\villager_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VillagerSpawner\villager_spawner.Designer.cs">
+      <DependentUpon>villager_spawner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="welcome_form\UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="welcome_form\UpdateForm.Designer.cs">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="welcome_form\WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="welcome_form\WelcomeForm.Designer.cs">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\page.Designer.cs">
+      <DependentUpon>page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\sentence.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\sentence.Designer.cs">
+      <DependentUpon>sentence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\written_book_spawner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WrittrenBookSpawner\written_book_spawner.Designer.cs">
+      <DependentUpon>written_book_spawner.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdvancementSpawner\advancement_spawner.resx">
+      <DependentUpon>advancement_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\bee_nest_destroyed\bee_nest_destoryed_page.resx">
+      <DependentUpon>bee_nest_destoryed_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\bred_animals\bred_animals_page.resx">
+      <DependentUpon>bred_animals_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\brewed_potion\brewed_potion_page.resx">
+      <DependentUpon>brewed_potion_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\changed_dimension\changed_dimension_page.resx">
+      <DependentUpon>changed_dimension_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\channeled_lightning\channeled_lightning_page.resx">
+      <DependentUpon>channeled_lightning_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\construct_beacon\construct_beacon_page.resx">
+      <DependentUpon>construct_beacon_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\consume_item\consume_item_page.resx">
+      <DependentUpon>consume_item_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\cured_zombie_villager\cured_zombie_villager_page.resx">
+      <DependentUpon>cured_zombie_villager_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\effects_changed\effects_changed_page.resx">
+      <DependentUpon>effects_changed_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\effects_changed\effect_form.resx">
+      <DependentUpon>effect_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\enchanted_item\enchanted_item_page.resx">
+      <DependentUpon>enchanted_item_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\tool_forms\block_form.resx">
+      <DependentUpon>block_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\enter_block\enter_block_page.resx">
+      <DependentUpon>enter_block_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\entity_hurt_player\entity_hurt_player_page.resx">
+      <DependentUpon>entity_hurt_player_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\entity_killed_player\entity_killed_player_page.resx">
+      <DependentUpon>entity_killed_player_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\filled_bucket\filled_bucket_page.resx">
+      <DependentUpon>filled_bucket_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\fishing_rod_hooked\fishing_rod_hooked_page.resx">
+      <DependentUpon>fishing_rod_hooked_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\hero_of_the_village\hero_of_the_village_page.resx">
+      <DependentUpon>hero_of_the_village_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\inventory_changed\inventory_changed_page.resx">
+      <DependentUpon>inventory_changed_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\item_durability_changed\item_durability_changed_page.resx">
+      <DependentUpon>item_durability_changed_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\item_used_on_block\item_used_on_block_page.resx">
+      <DependentUpon>item_used_on_block_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\killed_by_crossbow\killed_by_crossbow_page.resx">
+      <DependentUpon>killed_by_crossbow_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\levitation\levitation_page.resx">
+      <DependentUpon>levitation_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\location\location_page.resx">
+      <DependentUpon>location_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\nether_travel\nether_travel_page.resx">
+      <DependentUpon>nether_travel_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\placed_block\placed_block_page.resx">
+      <DependentUpon>placed_block_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\player_generates_container_loot\player_generates_container_loot_page.resx">
+      <DependentUpon>player_generates_container_loot_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\player_hurt_entity\player_hurt_entity_page.resx">
+      <DependentUpon>player_hurt_entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\player_interacted_with_entity\player_interacted_with_entity_page.resx">
+      <DependentUpon>player_interacted_with_entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\player_killed_entity\player_killed_entity_page.resx">
+      <DependentUpon>player_killed_entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\recipe_unlocked\recipe_unlocked_page.resx">
+      <DependentUpon>recipe_unlocked_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\shot_crossbow\shot_crossbow_page.resx">
+      <DependentUpon>shot_crossbow_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\slept_in_bed\slept_in_bed_page.resx">
+      <DependentUpon>slept_in_bed_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\slide_down_block\slide_down_block_page.resx">
+      <DependentUpon>slide_down_block_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\summoned_entity\summoned_entity_page.resx">
+      <DependentUpon>summoned_entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\tame_animal\tame_animal_page.resx">
+      <DependentUpon>tame_animal_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\target_hit\target_hit_page.resx">
+      <DependentUpon>target_hit_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\thrown_item_picked_up_by_entity\thrown_item_picked_up_by_entity_page.resx">
+      <DependentUpon>thrown_item_picked_up_by_entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\tick\tick_page.resx">
+      <DependentUpon>tick_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\used_ender_eye\used_ender_eye_page.resx">
+      <DependentUpon>used_ender_eye_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\used_totem\used_totem_page.resx">
+      <DependentUpon>used_totem_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\villager_trade\villager_trade_page.resx">
+      <DependentUpon>villager_trade_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers\voluntary_exile\voluntary_exile_page.resx">
+      <DependentUpon>voluntary_exile_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancementSpawner\triggers_form.resx">
+      <DependentUpon>triggers_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomCarverSpawner\carver_spawner.resx">
+      <DependentUpon>carver_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomCarverSpawner\CarverType\canyon.resx">
+      <DependentUpon>canyon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomCarverSpawner\CarverType\cave.resx">
+      <DependentUpon>cave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomBiomeSpawner\BiomeNodes\spawners.resx">
+      <DependentUpon>spawners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomBiomeSpawner\biome_spawner.resx">
+      <DependentUpon>biome_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatapackSpawner\datapack_head.resx">
+      <DependentUpon>datapack_head.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatapackSpawner\datapack_ui.resx">
+      <DependentUpon>datapack_ui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\BiomeSource\multi_noise.resx">
+      <DependentUpon>multi_noise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\BiomeSource\muti_noise_biomes.resx">
+      <DependentUpon>muti_noise_biomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\dimension_spawner.resx">
+      <DependentUpon>dimension_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\dimension_type.resx">
+      <DependentUpon>dimension_type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\generator_flat.resx">
+      <DependentUpon>generator_flat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\generator_noise.resx">
+      <DependentUpon>generator_noise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DimensionSpawner\settings.resx">
+      <DependentUpon>settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitySpawner\EntityNBTForm.resx">
+      <DependentUpon>EntityNBTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitySpawner\entity_page.resx">
+      <DependentUpon>entity_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitySpawner\entity_potion.resx">
+      <DependentUpon>entity_potion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitySpawner\entity_spawner.resx">
+      <DependentUpon>entity_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitySpawner\passenger_page.resx">
+      <DependentUpon>passenger_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSpawner\BlockStateProvider\SimpleState.resx">
+      <DependentUpon>SimpleState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSpawner\BlockStateProvider\WeightedState.resx">
+      <DependentUpon>WeightedState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSpawner\FeatureType\Tree.resx">
+      <DependentUpon>Tree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSpawner\feature_spawner.resx">
+      <DependentUpon>feature_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FireWorkSpawner\firework_page.resx">
+      <DependentUpon>firework_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FireWorkSpawner\firework_spawner.resx">
+      <DependentUpon>firework_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSpawner\attribute_component.resx">
+      <DependentUpon>attribute_component.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSpawner\enchantment_component.resx">
+      <DependentUpon>enchantment_component.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSpawner\item_component.resx">
+      <DependentUpon>item_component.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSpawner\item_spawner.resx">
+      <DependentUpon>item_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSpawner\potion_component.resx">
+      <DependentUpon>potion_component.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\block_state_property.resx">
+      <DependentUpon>block_state_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\damage_source_properties.resx">
+      <DependentUpon>damage_source_properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\entity_properties.resx">
+      <DependentUpon>entity_properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\entity_scores.resx">
+      <DependentUpon>entity_scores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\location_check.resx">
+      <DependentUpon>location_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\match_tool.resx">
+      <DependentUpon>match_tool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\random_chance.resx">
+      <DependentUpon>random_chance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\random_chance_with_looting.resx">
+      <DependentUpon>random_chance_with_looting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\reference.resx">
+      <DependentUpon>reference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\adv_page.resx">
+      <DependentUpon>adv_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\effect_page.resx">
+      <DependentUpon>effect_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\entity_property_form.resx">
+      <DependentUpon>entity_property_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\equipment_slot.resx">
+      <DependentUpon>equipment_slot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\enchant_page.resx">
+      <DependentUpon>enchant_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\ItemPredicate\item_form.resx">
+      <DependentUpon>item_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\block_predicate_page.resx">
+      <DependentUpon>block_predicate_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\fluid_predicate_page.resx">
+      <DependentUpon>fluid_predicate_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\LocationCheck\location_form.resx">
+      <DependentUpon>location_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\SubComponents\EntityProperty\stats_page.resx">
+      <DependentUpon>stats_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\table_bonus.resx">
+      <DependentUpon>table_bonus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\time_check.resx">
+      <DependentUpon>time_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_components\weather_check.resx">
+      <DependentUpon>weather_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\condition_form.resx">
+      <DependentUpon>condition_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\entry_item.resx">
+      <DependentUpon>entry_item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\apply_bonus.resx">
+      <DependentUpon>apply_bonus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\copy_nbt.resx">
+      <DependentUpon>copy_nbt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\copy_state.resx">
+      <DependentUpon>copy_state.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\enchant_randomly.resx">
+      <DependentUpon>enchant_randomly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\enchant_with_levels.resx">
+      <DependentUpon>enchant_with_levels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\exploration_map.resx">
+      <DependentUpon>exploration_map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\fill_player_head.resx">
+      <DependentUpon>fill_player_head.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\limit_count.resx">
+      <DependentUpon>limit_count.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\looting_enchant.resx">
+      <DependentUpon>looting_enchant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_attributes.resx">
+      <DependentUpon>set_attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_contents.resx">
+      <DependentUpon>set_contents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_count.resx">
+      <DependentUpon>set_count.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_damage.resx">
+      <DependentUpon>set_damage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_loot_table.resx">
+      <DependentUpon>set_loot_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_lore.resx">
+      <DependentUpon>set_lore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_name.resx">
+      <DependentUpon>set_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_nbt.resx">
+      <DependentUpon>set_nbt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\set_stew_effect.resx">
+      <DependentUpon>set_stew_effect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\copy_nbt\copy_nbt_form.resx">
+      <DependentUpon>copy_nbt_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\copy_nbt\ops_page.resx">
+      <DependentUpon>ops_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_attributes\attribute_page.resx">
+      <DependentUpon>attribute_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_attributes\set_attributes_form.resx">
+      <DependentUpon>set_attributes_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_form.resx">
+      <DependentUpon>set_lore_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_lore\set_lore_page.resx">
+      <DependentUpon>set_lore_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_form.resx">
+      <DependentUpon>set_stew_effect_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_components\SubComponents\set_stew_effect\set_stew_effect_page.resx">
+      <DependentUpon>set_stew_effect_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\function_form.resx">
+      <DependentUpon>function_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\lt_spawner.resx">
+      <DependentUpon>lt_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LootTableSpawner\pool_item.resx">
+      <DependentUpon>pool_item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\about_cbhk.resx">
+      <DependentUpon>about_cbhk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\cbhk_form.resx">
+      <DependentUpon>cbhk_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\command_result.resx">
+      <DependentUpon>command_result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\feedback_bugs.resx">
+      <DependentUpon>feedback_bugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\individualization.resx">
+      <DependentUpon>individualization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\join_group.resx">
+      <DependentUpon>join_group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\load_links.resx">
+      <DependentUpon>load_links.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\set_links.resx">
+      <DependentUpon>set_links.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RecipeSpawner\recipe_page.resx">
+      <DependentUpon>recipe_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeSpawner\recipe_spawner.resx">
+      <DependentUpon>recipe_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeSpawner\value_tab.resx">
+      <DependentUpon>value_tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Entity\DelayTimes.resx">
+      <DependentUpon>DelayTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Entity\EveryHurted.resx">
+      <DependentUpon>EveryHurted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Entity\HurtedDamage.resx">
+      <DependentUpon>HurtedDamage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Item\DropItemByQKey.resx">
+      <DependentUpon>DropItemByQKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Item\HaveItems.resx">
+      <DependentUpon>HaveItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Item\SelectedItem.resx">
+      <DependentUpon>SelectedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\ConditionCompnents\Item\WearItem.resx">
+      <DependentUpon>WearItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\EventsCompnents\GetEffect.resx">
+      <DependentUpon>GetEffect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\EventsCompnents\ParticleEffect.resx">
+      <DependentUpon>ParticleEffect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\EventsCompnents\SpreadTeleport.resx">
+      <DependentUpon>SpreadTeleport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\EventsCompnents\StruckByLightning.resx">
+      <DependentUpon>StruckByLightning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\EventsCompnents\SummonEntity.resx">
+      <DependentUpon>SummonEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\SkillInfo.resx">
+      <DependentUpon>SkillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkillSpawner\skill_ui.resx">
+      <DependentUpon>skill_ui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpawnerSpawner\spawner_spawner.resx">
+      <DependentUpon>spawner_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SurfaceBuilderSpawner\surface_builder_spawner.resx">
+      <DependentUpon>surface_builder_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagSpawner\tag_page.resx">
+      <DependentUpon>tag_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagSpawner\tag_spawner.resx">
+      <DependentUpon>tag_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VillagerSpawner\transaction_page.resx">
+      <DependentUpon>transaction_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VillagerSpawner\villager_page.resx">
+      <DependentUpon>villager_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VillagerSpawner\villager_spawner.resx">
+      <DependentUpon>villager_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="welcome_form\UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="welcome_form\WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WrittrenBookSpawner\page.resx">
+      <DependentUpon>page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WrittrenBookSpawner\sentence.resx">
+      <DependentUpon>sentence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WrittrenBookSpawner\written_book_spawner.resx">
+      <DependentUpon>written_book_spawner.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArmorStand\ArmorStand.csproj">
+      <Project>{3c8969d7-efc9-47b6-8147-b021dd7731cf}</Project>
+      <Name>ArmorStand</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\命令管家\CB Edition\CB Edition\bin\Debug\SQK_Ui.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CB图标.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
